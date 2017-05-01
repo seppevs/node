@@ -55,7 +55,7 @@ function request(i) {
     socket.on('close', function() {
       ++count;
       if (count < max) {
-        assert.strictEqual(http.globalAgent.sockets[name].indexOf(socket), -1);
+        assert.ok(!http.globalAgent.sockets[name].includes(socket));
       } else {
         assert(!http.globalAgent.sockets.hasOwnProperty(name));
         assert(!http.globalAgent.requests.hasOwnProperty(name));
